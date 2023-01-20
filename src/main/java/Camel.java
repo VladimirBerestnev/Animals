@@ -2,6 +2,7 @@ public class Camel extends Packs{
 
     String name;
     int age;
+    String type = "Camel";
 
     public Camel(){}
 
@@ -13,6 +14,15 @@ public class Camel extends Packs{
     public String getName() {
         return name;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
 
     public void setName(String name) {
         this.name = name;
@@ -26,3 +36,5 @@ public class Camel extends Packs{
         this.age = age;
     }
 }
+
+
