@@ -25,10 +25,30 @@ public class Main {
                     addAnimal();
                }
                if (act == 2){
-                   showAnimal();
+                   showPets();
+                   showPacks();
                }
+               if (act == 3){
+                   System.out.println("1 - Домашнее животное, 2 - вьючное животное, 0 - назад");
+                   try {
+                       String command = sc1.nextLine();
+                       int number = Integer.parseInt(command);
+                       if (number == 0){
+                           return;
+                       } else if (number == 1){
+                           showPets();
+                           learnPets();
+                       } else if (number == 2){
+                           showPacks();
+                           learnPacks();
+                       } else {
+                           System.out.println("Неверный ввод");
 
-
+                       }
+                   } catch (NumberFormatException e) {
+                       System.out.println("Неверный ввод");
+                   }
+               }
            } catch (NumberFormatException e) {
                System.out.println("Неверный ввод");
            }
@@ -36,14 +56,82 @@ public class Main {
        }
     }
 
-    private static void showAnimal() {
+    private static void learnPets() {
+
+        System.out.println("Напишите имя животного для обучения новым командам:");
+        Scanner sc3 = new Scanner(System.in);
+        String name = sc3.nextLine();
+        for (Pets pet : pets) {
+            if (pet.getName().equals(name)){
+                System.out.println(pet.getType() + " " + pet.getName() + " " + pet.getAge());
+
+                System.out.println();
+                command();
+                return;
+
+            }
+        }
+        System.out.println("Такого имени не найдено");
+
+    }
+
+    private static void learnPacks() {
+
+        System.out.println("Напишите имя животного для обучения новым командам:");
+        Scanner sc3 = new Scanner(System.in);
+        String name = sc3.nextLine();
+        for (Packs pack : packs) {
+            if (pack.getName().equals(name)){
+                System.out.println(pack.getType() + " " + pack.getName() + " " + pack.getAge());
+
+                System.out.println();
+                command();
+                return;
+            }
+        }
+        System.out.println("Такого имени не найдено");
+
+    }
+
+    private static void command() {
+        System.out.println("Какой команде обучить животное?");
+        System.out.println("1 - голос, 2 - охранять, 3 - носить, 4 - бежать, 0 - назад");
+        Scanner sc4 = new Scanner(System.in);
+        try {
+            String com = sc4.nextLine();
+            int number = Integer.parseInt(com);
+            if (number == 0){
+                return;
+            } else if (number == 1){
+                System.out.println("Команда изучена");
+                return;
+            } else if (number == 2){
+                System.out.println("Команда изучена");
+                return;
+            } else if (number == 3){
+                System.out.println("Команда изучена");
+                return;
+            } else if (number == 4){
+                System.out.println("Команда изучена");
+                return;
+            } else {
+                System.out.println("Неверный ввод");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Неверный ввод");
+        }
+    }
+
+    private static void showPets() {
 
         System.out.println("Домашние животные");
 
-        for (Pets pet : pets){
+        for (Pets pet : pets) {
             System.out.println(pet.getType() + " " + pet.getName() + " " + pet.getAge());
         }
-        System.out.println("");
+    }
+        private static void showPacks() {
         System.out.println("Вьючные животные");
 
         for (Packs pack : packs){
